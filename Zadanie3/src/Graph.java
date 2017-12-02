@@ -223,8 +223,37 @@ public class Graph {
         return lengthCriticalPath;
     }
 
-    public CriticalPath getCriticalPathA() {
-        Graph graph = new Graph(8, 11);
+    public CriticalPath getCriticalPath(List<Action> actionsList, String variant) {
+        Graph graph = makeGraph(actionsList, variant);
+
+        graph.criticalPath();
+        System.out.println("Critical Path " + variant + " length: "
+                + graph.criticalPathLength());
+        System.out.println("Critical Path " +variant + ": " + graph.verticesCriticalPath());
+
+        CriticalPath criticalPath = new CriticalPath();
+        criticalPath.setLength(graph.criticalPathLength());
+        criticalPath.setNodesNumbers(graph.verticesCriticalPath());
+
+        return criticalPath;
+    }
+
+    private Graph makeGraph(List<Action> actionsList, String variant) {
+        Graph graph = null;
+        if("A".equals(variant)) {
+            graph = new Graph(8, 11);
+            graph.addVertexes(graph);
+            graph.addEdgesA(graph, actionsList);
+        } else {
+            graph = new Graph(8, 10);
+            addVertexes(graph);
+            addEdgesB(graph, actionsList);
+        }
+
+        return graph;
+    }
+
+    private void addVertexes(Graph graph){
         graph.quiet();
         graph.addVertex("A");
         graph.addVertex("B");
@@ -234,66 +263,35 @@ public class Graph {
         graph.addVertex("F");
         graph.addVertex("G");
         graph.addVertex("H");
-
-        graph.addEdge("A", "B", 14.0);
-        graph.addEdge("A", "C", 10.0);
-        graph.addEdge("A", "D", 11.0);
-        graph.addEdge("B", "C", 2.0);
-        graph.addEdge("B", "E", 10.0);
-        graph.addEdge("C", "F", 21.0);
-        graph.addEdge("C", "G", 14.0);
-        graph.addEdge("D", "G", 18.0);
-        graph.addEdge("E", "H", 8.0);
-        graph.addEdge("F", "H", 12.0);
-        graph.addEdge("G", "H", 20.0);
-
-        graph.criticalPath();
-        System.out.println("Critical Path A length: "
-                + graph.criticalPathLength());
-        System.out.println("Critical Path A: " + graph.verticesCriticalPath());
-
-        CriticalPath criticalPath = new CriticalPath();
-        criticalPath.setLength(graph.criticalPathLength());
-        criticalPath.setNodesNumbers(graph.verticesCriticalPath());
-
-        return criticalPath;
     }
 
-    public CriticalPath getCriticalPathB() {
-
-        Graph graph2 = new Graph(8, 11);
-        graph2.quiet();
-        graph2.addVertex("A");
-        graph2.addVertex("B");
-        graph2.addVertex("C");
-        graph2.addVertex("D");
-        graph2.addVertex("E");
-        graph2.addVertex("F");
-        graph2.addVertex("G");
-        graph2.addVertex("H");
-
-        graph2.addEdge("A", "B", 19.5);
-        graph2.addEdge("A", "C", 14.0);
-        graph2.addEdge("A", "D", 6.0);
-        graph2.addEdge("B", "E", 9.0);
-        graph2.addEdge("C", "F", 19.0);
-        graph2.addEdge("C", "G", 15.0);
-        graph2.addEdge("D", "G", 6.0);
-        graph2.addEdge("E", "H", 21.0);
-        graph2.addEdge("F", "H", 16.0);
-        graph2.addEdge("G", "H", 21.0);
-
-        graph2.criticalPath();
-        System.out.println("Critical Path B length: "
-                + graph2.criticalPathLength());
-        System.out.println("Critical Path B: " + graph2.verticesCriticalPath());
-
-        CriticalPath criticalPath2 = new CriticalPath();
-        criticalPath2.setLength(graph2.criticalPathLength());
-        criticalPath2.setNodesNumbers(graph2.verticesCriticalPath());
-
-        return criticalPath2;
+    private void addEdgesA(Graph graph, List<Action> actionsList) {
+        graph.addEdge("A", "B", actionsList.get(0).getT());
+        graph.addEdge("A", "C", actionsList.get(1).getT());
+        graph.addEdge("A", "D", actionsList.get(2).getT());
+        graph.addEdge("B", "C", actionsList.get(3).getT());
+        graph.addEdge("B", "E", actionsList.get(4).getT());
+        graph.addEdge("C", "F", actionsList.get(5).getT());
+        graph.addEdge("C", "G", actionsList.get(6).getT());
+        graph.addEdge("D", "G", actionsList.get(7).getT());
+        graph.addEdge("E", "H", actionsList.get(8).getT());
+        graph.addEdge("F", "H", actionsList.get(9).getT());
+        graph.addEdge("G", "H", actionsList.get(10).getT());
     }
+
+    private void addEdgesB(Graph graph, List<Action> actionsList) {
+        graph.addEdge("A", "B", actionsList.get(0).getT());
+        graph.addEdge("A", "C", actionsList.get(1).getT());
+        graph.addEdge("A", "D", actionsList.get(2).getT());
+        graph.addEdge("B", "E", actionsList.get(3).getT());
+        graph.addEdge("C", "F", actionsList.get(4).getT());
+        graph.addEdge("C", "G", actionsList.get(5).getT());
+        graph.addEdge("D", "G", actionsList.get(6).getT());
+        graph.addEdge("E", "H", actionsList.get(7).getT());
+        graph.addEdge("F", "H", actionsList.get(8).getT());
+        graph.addEdge("G", "H", actionsList.get(9).getT());
+    }
+
 
     private void getEnd() {
         for (int i = 0; i < vertices.length; i++) {
