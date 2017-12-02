@@ -28,7 +28,7 @@ public class Main {
         double sB = Math.sqrt(s_squareSumB);
 
         double z = ((EXPECTED_TIME - criticalPath.getLength()) / s);
-        double zB = ((EXPECTED_TIME - criticalPathB.getLength()) / s);
+        double zB = ((EXPECTED_TIME - criticalPathB.getLength()) / sB);
 
         System.out.println("Critical path A: " + s_squareSum + ", " + s + ", " + z);
         System.out.println("Critical path B: " + s_squareSumB + ", " + sB + ", " + zB);
