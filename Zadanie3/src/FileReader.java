@@ -5,22 +5,22 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Damian Deska on 2017-12-02.
- */
 public class FileReader {
 
-    private static String FILE_NAME = "src/data.txt";
+    private static String FILE_NAME = "src/dataA.txt";
+    private static String FILE_NAME2 = "src/dataB.txt";
 
     public List<Action> getActionsList() {
         List<Action> actionsList = new ArrayList<>();
         try {
             FileInputStream fis = new FileInputStream(FILE_NAME);
+            FileInputStream fis2 = new FileInputStream(FILE_NAME2);
             BufferedReader br = new BufferedReader(new InputStreamReader(fis));
+            BufferedReader br2 = new BufferedReader(new InputStreamReader(fis2));
             String line = null;
             String[] actionLine = null;
 
-            while((line = br.readLine()) != null) {
+            while ((line = br.readLine()) != null || (line = br2.readLine()) != null) {
                 Action action = new Action();
                 actionLine = line.split(",");
                 action.setI(Integer.parseInt(actionLine[0]));
@@ -31,7 +31,8 @@ public class FileReader {
                 System.out.println(line);
                 actionsList.add(action);
             }
-        } catch(IOException e){
+
+        } catch (IOException e) {
 
         }
         return actionsList;
