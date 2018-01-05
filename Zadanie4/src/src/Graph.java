@@ -252,34 +252,34 @@ public class Graph {
 
     private void addVertexes(Graph graph){
         graph.quiet();
-        graph.addVertex("1");
-        graph.addVertex("2");
-        graph.addVertex("3");
-        graph.addVertex("4");
-        graph.addVertex("5");
-        graph.addVertex("6");
-        graph.addVertex("7");
-        graph.addVertex("8");
-        graph.addVertex("9");
+        graph.addVertex("A");
+        graph.addVertex("B");
+        graph.addVertex("C");
+        graph.addVertex("D");
+        graph.addVertex("E");
+        graph.addVertex("F");
+        graph.addVertex("G");
+        graph.addVertex("H");
+        graph.addVertex("I");
 
     }
 
     private void addEdgesA(Graph graph, List<Action> actionsList) {
-        graph.addEdge("1", "2", actionsList.get(0).getT());
-        graph.addEdge("1", "3", actionsList.get(1).getT());
-        graph.addEdge("1", "4", actionsList.get(2).getT());
-        graph.addEdge("2", "5", actionsList.get(3).getT());
-        graph.addEdge("2", "6", actionsList.get(4).getT());
-        graph.addEdge("3", "5", actionsList.get(5).getT());
-        graph.addEdge("3", "6", actionsList.get(6).getT());
-        graph.addEdge("3", "7", actionsList.get(7).getT());
-        graph.addEdge("4", "6", actionsList.get(8).getT());
-        graph.addEdge("4", "7", actionsList.get(9).getT());
-        graph.addEdge("5", "8", actionsList.get(10).getT());
-        graph.addEdge("5", "9", actionsList.get(11).getT());
-        graph.addEdge("6", "8", actionsList.get(12).getT());
-        graph.addEdge("7", "8", actionsList.get(13).getT());
-        graph.addEdge("8", "9", actionsList.get(14).getT());
+        graph.addEdge("A", "B", actionsList.get(0).getS());
+        graph.addEdge("A", "C", actionsList.get(1).getS());
+        graph.addEdge("A", "D", actionsList.get(2).getS());
+        graph.addEdge("B", "E", actionsList.get(3).getS());
+        graph.addEdge("B", "F", actionsList.get(4).getS());
+        graph.addEdge("C", "E", actionsList.get(5).getS());
+        graph.addEdge("C", "F", actionsList.get(6).getS());
+        graph.addEdge("C", "G", actionsList.get(7).getS());
+        graph.addEdge("D", "F", actionsList.get(8).getS());
+        graph.addEdge("D", "G", actionsList.get(9).getS());
+        graph.addEdge("E", "H", actionsList.get(10).getS());
+        graph.addEdge("E", "I", actionsList.get(11).getS());
+        graph.addEdge("F", "H", actionsList.get(12).getS());
+        graph.addEdge("G", "H", actionsList.get(13).getS());
+        graph.addEdge("H", "I", actionsList.get(14).getS());
     }
 
 
