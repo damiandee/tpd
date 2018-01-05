@@ -2,7 +2,7 @@ import java.util.List;
 
 public class DynamicProgramming {
 
-    private static String DATA = "src/data.txt";
+    private static String DATA = "src/dane.txt";
 
 
     public static void main(String[] args) {
