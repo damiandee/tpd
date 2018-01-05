@@ -23,7 +23,7 @@ public class Action {
         return s;
     }
 
-    public void setS(int a) {
+    public void setS(int s) {
         this.s = s;
     }
 
