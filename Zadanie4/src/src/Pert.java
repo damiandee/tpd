@@ -15,6 +15,13 @@ public class Pert {
         return ((action.getS()));
     }
 
+    public void computeProbability(List<Action> actionsList) {
+        Graph graph = new Graph(8, 11);
+        CriticalPath criticalPath = graph.getCriticalPath(actionsList);
+
+        List<Action> criticalPathActionsList = getCriticalPathActions(criticalPath.getNodesNumbers(), actionsList);
+    }
+
     private static List<Action> getCriticalPathActions(List<Integer> nodesNumbers, List<Action> actionsList) {
         List<Action> criticalPathActionsList = new ArrayList<>();
         for (int i = 0; i < nodesNumbers.size(); i++) {
