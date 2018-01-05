@@ -277,7 +277,7 @@ public class Graph {
         graph.addEdge("E", "I", actionsList.get(11).getT());
         graph.addEdge("F", "H", actionsList.get(12).getT());
         graph.addEdge("G", "H", actionsList.get(13).getT());
-        graph.addEdge("H", "I", actionsList.get(14).getT());
+        graph.addEdge("G", "I", actionsList.get(14).getT());
     }
 
 
