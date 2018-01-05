@@ -228,7 +228,7 @@ public class Graph {
         Graph graph = makeGraph(actionsList);
 
         graph.criticalPath();
-        System.out.println("Critical Path " + " length: "
+        System.out.println("Critical Path length: "
                 + graph.criticalPathLength());
         System.out.println("Critical Path " + ": " + graph.verticesCriticalPath());
 
