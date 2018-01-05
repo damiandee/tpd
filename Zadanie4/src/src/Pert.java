@@ -30,16 +30,6 @@ public class Pert {
     public void computeProbability(List<Action> actionsList) {
         Graph graph = new Graph(9, 15);
         CriticalPath criticalPath = graph.getCriticalPath(actionsList);
-
-        List<Action> criticalPathActionsList = getCriticalPathActions(criticalPath.getNodesNumbers(), actionsList);
-
-        double s_squareSum = getS_squareSum(criticalPathActionsList);
-        double s = Math.sqrt(s_squareSum);
-
-        double z = ((EXPECTED_TIME - criticalPath.getLength()) / s);
-
-//        System.out.println("s_square: " + s_squareSum + "\ns: " + s + "\nt: " + criticalPath.getLength() +
-//                "\nz: " + z + "\n============================================");
     }
 
     private static List<Action> getCriticalPathActions(List<Integer> nodesNumbers, List<Action> actionsList) {
@@ -52,14 +42,6 @@ public class Pert {
             }
         }
         return criticalPathActionsList;
-    }
-
-    private static double getS_squareSum(List<Action> actionsList) {
-        double sum = 0;
-        for (Action action : actionsList) {
-            //sum += action.getS_square();
-        }
-        return sum;
     }
 
 }
