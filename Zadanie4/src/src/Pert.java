@@ -16,7 +16,7 @@ public class Pert {
     }
 
     public void computeProbability(List<Action> actionsList) {
-        Graph graph = new Graph(8, 11);
+        Graph graph = new Graph(9, 15);
         CriticalPath criticalPath = graph.getCriticalPath(actionsList);
 
         List<Action> criticalPathActionsList = getCriticalPathActions(criticalPath.getNodesNumbers(), actionsList);

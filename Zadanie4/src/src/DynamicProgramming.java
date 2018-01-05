@@ -14,7 +14,7 @@ public class DynamicProgramming {
         List<Action> actionsList = fileReader.getActionsList(dataVariantName);
         Pert pert = new Pert();
         pert.computeActionFactor(actionsList);
-        //pert.computeProbability(actionsList);
+        pert.computeProbability(actionsList);
     }
 
 }

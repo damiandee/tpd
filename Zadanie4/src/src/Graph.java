@@ -37,14 +37,16 @@ public class Graph {
         this.maxVertices = maxVertices;
         this.maxEdges = maxEdges;
 
-        this.nodesMap.put("A", 1);
-        this.nodesMap.put("B", 2);
-        this.nodesMap.put("C", 3);
-        this.nodesMap.put("D", 4);
-        this.nodesMap.put("E", 5);
-        this.nodesMap.put("F", 6);
-        this.nodesMap.put("G", 7);
-        this.nodesMap.put("H", 8);
+        this.nodesMap.put("1", 1);
+        this.nodesMap.put("2", 2);
+        this.nodesMap.put("3", 3);
+        this.nodesMap.put("4", 4);
+        this.nodesMap.put("5", 5);
+        this.nodesMap.put("6", 6);
+        this.nodesMap.put("7", 7);
+        this.nodesMap.put("8", 8);
+        this.nodesMap.put("9", 9);
+
 
         nVertices = 0;
         nEdges = 0;
