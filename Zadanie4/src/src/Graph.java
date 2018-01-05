@@ -228,8 +228,7 @@ public class Graph {
         Graph graph = makeGraph(actionsList);
 
         graph.criticalPath();
-        System.out.println("Critical Path length: "
-                + graph.criticalPathLength());
+        System.out.println("Critical Path length: " + graph.criticalPathLength());
         System.out.println("Critical Path " + ": " + graph.verticesCriticalPath());
 
         CriticalPath criticalPath = new CriticalPath();
@@ -264,21 +263,21 @@ public class Graph {
     }
 
     private void addEdgesA(Graph graph, List<Action> actionsList) {
-        graph.addEdge("A", "B", actionsList.get(0).getS());
-        graph.addEdge("A", "C", actionsList.get(1).getS());
-        graph.addEdge("A", "D", actionsList.get(2).getS());
-        graph.addEdge("B", "E", actionsList.get(3).getS());
-        graph.addEdge("B", "F", actionsList.get(4).getS());
-        graph.addEdge("C", "E", actionsList.get(5).getS());
-        graph.addEdge("C", "F", actionsList.get(6).getS());
-        graph.addEdge("C", "G", actionsList.get(7).getS());
-        graph.addEdge("D", "F", actionsList.get(8).getS());
-        graph.addEdge("D", "G", actionsList.get(9).getS());
-        graph.addEdge("E", "H", actionsList.get(10).getS());
-        graph.addEdge("E", "I", actionsList.get(11).getS());
-        graph.addEdge("F", "H", actionsList.get(12).getS());
-        graph.addEdge("G", "H", actionsList.get(13).getS());
-        graph.addEdge("H", "I", actionsList.get(14).getS());
+        graph.addEdge("A", "B", actionsList.get(0).getT());
+        graph.addEdge("A", "C", actionsList.get(1).getT());
+        graph.addEdge("A", "D", actionsList.get(2).getT());
+        graph.addEdge("B", "E", actionsList.get(3).getT());
+        graph.addEdge("B", "F", actionsList.get(4).getT());
+        graph.addEdge("C", "E", actionsList.get(5).getT());
+        graph.addEdge("C", "F", actionsList.get(6).getT());
+        graph.addEdge("C", "G", actionsList.get(7).getT());
+        graph.addEdge("D", "F", actionsList.get(8).getT());
+        graph.addEdge("D", "G", actionsList.get(9).getT());
+        graph.addEdge("E", "H", actionsList.get(10).getT());
+        graph.addEdge("E", "I", actionsList.get(11).getT());
+        graph.addEdge("F", "H", actionsList.get(12).getT());
+        graph.addEdge("G", "H", actionsList.get(13).getT());
+        graph.addEdge("H", "I", actionsList.get(14).getT());
     }
 
 

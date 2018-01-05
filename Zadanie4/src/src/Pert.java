@@ -6,26 +6,17 @@ import java.util.List;
  */
 public class Pert {
 
-    private static int EXPECTED_TIME = 48;
+    //private static int EXPECTED_TIME = 48;
 
     public void computeActionFactor(List<Action> actionsList) {
         for(Action action : actionsList) {
-           // action.setT(computeT(action));
-            //action.setS_square(computeS_square(action));
+            action.setT(computeT(action));
         }
     }
 
-//    private double computeT(Action action) {
-//        return ((action.getA() + (4.0* action.getM()) + action.getB()) / 6.0);
-//    }
-
-//    private double computeS_square(Action action) {
-//        double subtract = action.getB() - action.getA();
-//        double divide = subtract / 6.0;
-//        double s_square = Math.round(Math.pow(divide, 2) * 100);
-//        s_square = s_square/100;
-//        return s_square;
-//    }
+    private double computeT(Action action) {
+        return action.getS();
+    }
 
     public void computeProbability(List<Action> actionsList) {
         Graph graph = new Graph(9, 15);
