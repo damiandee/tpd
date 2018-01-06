@@ -1,6 +1,8 @@
-import java.util.Iterator;
+import java.util.*;
 
 public class TestGraphs {
+
+    private static List<Integer> shortestPathNodesNumbersList = new ArrayList<Integer>();
 
     public static void main(String[] args) {
 
@@ -64,10 +66,33 @@ public class TestGraphs {
             }
         }
 
-        System.out.println("Vertex\tDistance\tPredecessor");
+        System.out.println("\nWierzchołek\tStraty\tPrzodek");
         for (int i = 0; i < g.getvCount(); i++) {
-            System.out.println(i + "\t\t " + distances[i] + "\t\t\t" + predecessors[i]);
+            System.out.println((i + 1) + "\t\t " + distances[i] + "\t\t\t" + (predecessors[i] + 1));
         }
 
+        printPath(predecessors, (predecessors.length - 1));
+
+        String shortestPath = "";
+        for(int i = 0; i < (shortestPathNodesNumbersList.size() - 1); i++) {
+            shortestPath += Integer.toString(shortestPathNodesNumbersList.get(i)) + " -> ";
+        }
+
+        shortestPath += Integer.toString(shortestPathNodesNumbersList.get(shortestPathNodesNumbersList.size() - 1));
+
+        System.out.println("\nZnaleziona strategia optymalna to: " + shortestPath + ", jej długość wynosi: " + distances[distances.length - 1]);
+    }
+
+
+
+    static int printPath(int[] predecessors, int v) {
+
+        if(v < 0) {
+            return 0;
+        }
+
+        printPath(predecessors, predecessors[v]);
+        shortestPathNodesNumbersList.add(v + 1);
+        return v + 1;
     }
 }
