@@ -13,9 +13,9 @@ public class TaskManager {
     private int PROCESSORS_NUM = 4;
     private int TASK_NUM = 10;
     private List<Processor> processorsList = new ArrayList<>();
-    private List<Task> tastkList = new ArrayList<>();
+    private List<Task> tasksList = new ArrayList<>();
     private Random rand = new Random();
-    
+
     public void manageTasks() {
 
         boolean allTasksDoneFlag = false;
@@ -23,10 +23,10 @@ public class TaskManager {
         makeProcessors();
         makeTasks();
 
-        while(isStillAnyTaskPending()) {
+        while (isStillAnyTaskPending()) {
             endTasksIfDone();
 
-            if(isAnyProcessorFree()) {
+            if (isAnyProcessorFree()) {
                 Task currentTask = getAnotherTask();
                 Processor currentProcessor = findFreeProcessor();
 
@@ -34,34 +34,41 @@ public class TaskManager {
             }
         }
 
-        System.out.println("Done!");
-        
+        System.out.println("ZADANIA");
+        for (int i = 0; i < tasksList.size(); i++) {
+            System.out.print("Zadanie nr ");
+            System.out.print(tasksList.get(i).getIndexNumber() + ", czas: ");
+            System.out.println(tasksList.get(i).getDuration() + ", procesor: ");
+        }
+
+        System.out.println("\nDone!");
+
     }
-    
+
     private void makeProcessors() {
-        for(int i = 0; i < PROCESSORS_NUM; i++) {
+        for (int i = 0; i < PROCESSORS_NUM; i++) {
             processorsList.add(new Processor());
         }
     }
 
     private void makeTasks() {
-        for(int i = 0; i < TASK_NUM; i++) {
-            tastkList.add(new Task(i, generateRandomTime()));
+        for (int i = 0; i < TASK_NUM; i++) {
+            tasksList.add(new Task(i, generateRandomTime()));
         }
-        tastkList = sortTasksFromLongest();
+        tasksList = sortTasksFromLongest();
     }
 
     private List<Task> sortTasksFromLongest() {
-        return tastkList.stream().sorted(((o1, o2) -> Integer.compare(o2.getDuration(), o1.getDuration()))).collect(Collectors.toList());
+        return tasksList.stream().sorted(((o1, o2) -> Integer.compare(o2.getDuration(), o1.getDuration()))).collect(Collectors.toList());
     }
 
-    private int generateRandomTime(){
+    private int generateRandomTime() {
         return rand.nextInt(1001);
     }
 
-    private boolean isStillAnyTaskPending(){
-        for(Task task : tastkList) {
-            if(task.isPending()) {
+    private boolean isStillAnyTaskPending() {
+        for (Task task : tasksList) {
+            if (task.isPending()) {
                 return true;
             }
         }
@@ -69,19 +76,19 @@ public class TaskManager {
         return false;
     }
 
-    private boolean isAnyProcessorFree(){
-        for(Processor processor : processorsList) {
-            if(processor.isAvailable()) {
+    private boolean isAnyProcessorFree() {
+        for (Processor processor : processorsList) {
+            if (processor.isAvailable()) {
                 return true;
             }
         }
         return false;
     }
 
-    private Processor findFreeProcessor(){
+    private Processor findFreeProcessor() {
         Processor freeProcessor = new Processor();
-        for(Processor processor : processorsList) {
-            if(processor.isAvailable()) {
+        for (Processor processor : processorsList) {
+            if (processor.isAvailable()) {
                 freeProcessor = processor;
                 break;
             }
@@ -92,8 +99,8 @@ public class TaskManager {
 
     private Task getAnotherTask() {
         Task anotherTask = new Task(10000000, 0);
-        for(Task task : tastkList) {
-            if(task.isPending()) {
+        for (Task task : tasksList) {
+            if (task.isPending()) {
                 anotherTask = task;
                 break;
             }
@@ -102,12 +109,12 @@ public class TaskManager {
         return anotherTask;
     }
 
-    private void endTasksIfDone(){
+    private void endTasksIfDone() {
         Task processorCurrentTask;
-        for(Processor processor : processorsList) {
-            if(!processor.isAvailable()) {
+        for (Processor processor : processorsList) {
+            if (!processor.isAvailable()) {
                 processorCurrentTask = processor.getTask();
-                if(System.currentTimeMillis() - processorCurrentTask.getStartTime() > processorCurrentTask.getDuration()) {
+                if (System.currentTimeMillis() - processorCurrentTask.getStartTime() > processorCurrentTask.getDuration()) {
                     processor.endTask();
                 }
             }
