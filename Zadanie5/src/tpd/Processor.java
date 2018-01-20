@@ -5,17 +5,34 @@ package tpd;
  */
 public class Processor {
 
+    private int indexNumber;
     private boolean available = true;
     private Task task;
+
+    public Processor(int _indexNumber) {
+        this.indexNumber = _indexNumber;
+    }
 
     public void startTask(Task _task){
         this.available = false;
         this.task = _task;
         this.task.setPending(false);
+        this.task.setActive(true);
+        this.task.setStartTime(System.currentTimeMillis());
     }
 
     public void endTask(){
         this.available = true;
+        this.task.setActive(false);
+        this.task.setDone(true);
+    }
+
+    public int getIndexNumber() {
+        return indexNumber;
+    }
+
+    public void setIndexNumber(int indexNumber) {
+        this.indexNumber = indexNumber;
     }
 
     public boolean isAvailable() {
